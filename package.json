@@ -1,0 +1,18 @@
+{
+  "name": "npm-cache-rm",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cacache": "^15.0.5"
+  },
+  "bin": {
+    "npm-cache-rm": "./bin/npm-cache-rm"
+  }
+}
