@@ -1,14 +1,23 @@
 {
   "name": "npm-cache-rm",
   "version": "0.0.2",
-  "description": "",
+  "description": "remove entries from npm cache",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "keywords": [
+    "npm",
+    "node",
+    "cache"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greggman/npm-cache-rm.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Gregg Tavares",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/greggman/npm-cache-rm/issues"
+  },
+  "homepage": "https://github.com/greggman/npm-cache-rm#readme",
   "dependencies": {
     "cacache": "^15.0.5"
   },
