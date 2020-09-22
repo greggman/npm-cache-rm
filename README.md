@@ -37,7 +37,7 @@ npm-cache-rm "electron.*?10\.0\.\0"
 
 ## Disclaimer, Notes
 
-I'm not a node expert but it worked for me. I wanted to be to test some issues
+I'm not a node expert but it worked for me. I wanted to be able to test some issues
 I'm running into with packages without clearing the entire cache so I threw this
 together. I also wanted to keep the dependencies low so I didn't add a bunch of
 libraries for globing or argument parsing etc...
