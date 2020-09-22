@@ -11,7 +11,7 @@ if (preArgs.length < 0 || preArgs.length > 2) {
   printHelp();
 }
 const args = preArgs.filter(v => v !== '--dry-run');
-const dryRun = args.length !== preArgs;
+const dryRun = args.length !== preArgs.length;
 if (args.length !== 1) {
   printHelp();
 }
@@ -28,13 +28,13 @@ const cacachePath = path.join(cachePath, '_cacache');
 
 const realAPI = {
   ls: () => cacache.ls(cacachePath),
-  rm: (key) => cacache.rm.entry(cacachePath, key),
+  rm: (key) => { console.log(`rm ${key}`); return cacache.rm.entry(cacachePath, key); },
   verify: () => cacache.verify(cacachePath),
 };
 
 const fakeAPI = {
   ls: realAPI.ls,
-  rm: () => Promise.resolve(),
+  rm: (key) => { console.log(`would rm ${key}`); return Promise.resolve(); },
   verify: () => Promise.resolve(),
 };
 
@@ -45,12 +45,15 @@ const re = new RegExp(args[0]);
 api.ls().then((entries) => {
   const keys = Object.keys(entries).filter(k => re.test(k));
   return keys.reduce((p, key) => {
-    console.log(`rm ${key}`);
     return p.then(() => api.rm(key));
-  }, Promise.resolve());
-}).then(() => {
-  console.log('--cleaning up--');
-  return api.verify();
+  }, Promise.resolve()).then(() => keys);
+}).then((keys) => {
+  if (keys.length) {
+    console.log('--cleaning up--');
+    return api.verify();
+  }
+  console.log(`no matches for: ${re}`);
+  return Promise.resolve();
 }).then(() => {
   console.log('--done--');
 }).catch((e) => {
