@@ -1,6 +1,6 @@
 {
   "name": "npm-cache-rm",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "remove entries from npm cache",
   "main": "index.js",
   "keywords": [
